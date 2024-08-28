@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class FinalContest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int dancers = Integer.parseInt(scanner.nextLine());
+        double points = Double.parseDouble(scanner.nextLine());
+        String season = scanner.nextLine();
+        String location = scanner.nextLine();
+
+        double prizeMoney;
+
+        if (location.equals("Bulgaria")) {
+            prizeMoney = dancers * points;
+            if (season.equals("summer")) {
+                prizeMoney *= 0.95;
+            } else if (season.equals("winter")) {
+                prizeMoney *= 0.92;
+            }
+        } else {
+            prizeMoney = dancers * points * 1.50;
+            if (season.equals("summer")) {
+                prizeMoney *= 0.90;
+            } else if (season.equals("winter")) {
+                prizeMoney *= 0.85;
+            }
+        }
+
+        double charityAmount = prizeMoney * 0.75;
+        double moneyPerDancer = (prizeMoney * 0.25) / dancers;
+
+        System.out.printf("Charity - %.2f%n", charityAmount);
+        System.out.printf("Money per dancer - %.2f%n", moneyPerDancer);
+
+        scanner.close();
+    }
+}
